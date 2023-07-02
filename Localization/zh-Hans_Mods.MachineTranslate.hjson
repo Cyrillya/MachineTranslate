@@ -1,0 +1,157 @@
+Keybinds.Translate.DisplayName: 翻译物品简介
+
+Configs: {
+	Config: {
+		DisplayName: 配置
+
+		TranslateApi: {
+			Label: 翻译API
+			Tooltip: 如果翻译出错，可尝试更改翻译API
+		}
+
+		CustomTargetLang: {
+			Label: 自定义目标语言
+			Tooltip: 请输入文件代码，如“en”“zh”“ru”
+		}
+
+		Headers: {
+			Google: 谷歌翻译
+			Bing: 必应翻译
+			Baidu: 百度翻译
+			Caiyun: 彩云小译
+			Proxy: 代理设置
+		}
+
+		UseMirror: {
+			Label: 使用镜像站
+			Tooltip: 在中国大陆不使用代理无法访问谷歌翻译官方网站\n如果你没有代理，可以尝试使用镜像站
+		}
+
+		MirrorUrl: {
+			Label: 镜像站地址
+			Tooltip: 在此输入镜像站地址
+		}
+
+		GooglePortal: {
+			Label: 谷歌翻译解决方案
+			Tooltip: 划词翻译插件的一篇文章，内含可用的谷歌镜像站
+		}
+
+		BingSourceLang: {
+			Label: 必应翻译源语言
+			Tooltip: 必应翻译API不支持自动检测语言，必须指定语言。 请输入文件代码，如“en”“zh”“ru”
+		}
+
+		BingTranAppId: {
+			Label: 必应翻译AppID
+			Tooltip: 必应翻译需要提供API Key才能使用，可以在Azure平台申请
+		}
+
+		BaiduTranAppId: {
+			Label: 百度翻译AppID
+			Tooltip:
+				'''
+				百度翻译需要提供API Key才能使用，可以在百度翻译开放平台申请
+				每月5万免费字符，且可以免费切换至高级版，每月100万免费字符
+				'''
+		}
+
+		BaiduTranSecretKey: {
+			Label: 百度翻译密钥
+			Tooltip:
+				'''
+				百度翻译需要提供密钥才能使用，可以在百度翻译开放平台申请
+				每月5万免费字符，且可以免费切换至高级版，每月100万免费字符
+				'''
+		}
+
+		BaiduPortal: {
+			Label: 百度翻译开放平台
+			Tooltip: 可以在此申请翻译服务
+		}
+
+		BaiduTutorialPortal: {
+			Label: 百度翻译API申请教程
+			Tooltip: 划词翻译插件的一篇文章，手把手教你申请百度翻译API
+		}
+
+		CaiyunTranToken: {
+			Label: 彩云小译Token
+			Tooltip: 彩云小译需要提供Token才能使用，不过你也可以用免Token的API，由akl7777777大佬提供
+		}
+
+		CaiyunPortal: {
+			Label: 彩云科技开放平台
+			Tooltip: 可以在此申请翻译服务
+		}
+
+		CaiyunTutorialPortal: {
+			Label: 彩云小译API申请教程
+			Tooltip: 划词翻译插件的一篇文章，手把手教你申请彩云小译API
+		}
+
+		UseProxy: {
+			Label: 代理模式
+			Tooltip: 若使用HTTP或SOCKS代理，必须填好主机名和端口号
+		}
+
+		Ip: {
+			Label: 主机名
+			Tooltip: ""
+		}
+
+		Host: {
+			Label: 端口号
+			Tooltip: ""
+		}
+
+		UseCredential: {
+			Label: 代理身份验证
+			Tooltip: 如果你的代理需要登录，必须勾选此项，并填好用户名和密码
+		}
+
+		Username: {
+			Label: 用户名
+			Tooltip: ""
+		}
+
+		Password: {
+			Label: 密码
+			Tooltip: ""
+		}
+
+		OpenFile: {
+			Label: 打开配置文件
+			Tooltip: 配置选项只有被修改过一次后才会在文件中出现相应项
+		}
+
+		UsualLangCodePortal: {
+			Label: 常用语种代码
+			Tooltip: ""
+		}
+
+		AllLangCodePortal: {
+			Label: 所有语种代码
+			Tooltip: ""
+		}
+	}
+
+	TransApi: {
+		Tooltip: ""
+		Bing.Label: 必应（需API Key）
+		Google.Label: 谷歌（如果能上的话强烈推荐）
+		Baidu.Label: 百度（能申请API的话强烈推荐）（需API Key）
+		Caiyun.Label: 彩云（需Token）
+		CaiyunNoToken.Label: 彩云（无需Token）
+		Tencent.Label: 腾讯（无需API Key）
+		Volcengine.Label: 火山（无需API Key）
+	}
+
+	Proxy: {
+		Tooltip: ""
+		Default.Label: 默认（推荐）
+		Http.Label: Http
+		Socks.Label: Socks
+		No.Label: 不使用代理
+	}
+}

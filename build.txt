@@ -1,0 +1,4 @@
+displayName = 机器翻译
+author = Cyrilly
+version = 1.0
+side = Client
