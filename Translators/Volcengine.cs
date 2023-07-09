@@ -100,9 +100,9 @@ public class Volcengine : Translator
                     DetectTo = targetLang,
                     Text = text
                 }, response => {
-                    Lookup[text] = response.Result.Target.Trim();
+                    SetLookupValue(text, response.Result.Target.Trim());
                     TranslateStatus = Status.Idling;
-                    finishedCallback?.Invoke(Lookup[text]);
+                    finishedCallback?.Invoke(response.Result.Target.Trim());
                 });
             }
             catch (Exception e) {

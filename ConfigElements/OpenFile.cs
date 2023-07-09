@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using MachineTranslate.Contents;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -12,10 +13,20 @@ using Terraria.UI;
 
 namespace MachineTranslate.ConfigElements;
 
+public class OpenCachedTextFile : OpenFile
+{
+    protected override string FileName => "MachineTranslate_CachedContent.json";
+
+    public override void LeftClick(UIMouseEvent evt) {
+        SaveKeyValueLookup.SaveLookup();
+        base.LeftClick(evt);
+    }
+}
+
 public class OpenFile : ConfigElement
 {
-    private const string FileName = "MachineTranslate_Config.json";
-    private static readonly string FullPath = Path.Combine(ConfigManager.ModConfigPath, FileName);
+    protected virtual string FileName => "MachineTranslate_Config.json";
+    protected string FullPath => Path.Combine(ConfigManager.ModConfigPath, FileName);
 
     public override void OnBind() {
         base.OnBind();
@@ -44,6 +55,7 @@ public class OpenFile : ConfigElement
     public override void LeftClick(UIMouseEvent evt) {
         base.LeftClick(evt);
 
+        if (!File.Exists(FullPath)) return;
         Process.Start(new ProcessStartInfo(FullPath)
         {
             UseShellExecute = true

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MachineTranslate.Contents;
 using MachineTranslate.Translators;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Localization;
@@ -32,7 +31,6 @@ public class Core : ModSystem
         };
     }
 
-
     public override void Unload() {
         TranslatorLookup.Clear();
         TranslatorLookup = null;
@@ -57,10 +55,6 @@ public class Core : ModSystem
 
     public static Translator GetCurrentTranslator() {
         return TranslatorLookup[Config.TranslateApi];
-    }
-
-    public static Dictionary<string, string> GetCurrentLookup() {
-        return TranslatorLookup[Config.TranslateApi].Lookup;
     }
 
     public override void PostDrawInterface(SpriteBatch spriteBatch) {

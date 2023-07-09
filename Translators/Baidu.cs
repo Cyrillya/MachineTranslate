@@ -42,9 +42,9 @@ public class Baidu : Translator
                 if (JsonConvert.DeserializeObject(returnedJson) is JObject jo &&
                     jo.TryGetValue("trans_result", out var result)) {
                     string translated = result.Aggregate("", (current, child) => current + "\n " + child["dst"]);
-                    Lookup[text] = translated.Trim();
+                    SetLookupValue(text, translated.Trim());
                     TranslateStatus = Status.Idling;
-                    finishedCallback?.Invoke(Lookup[text]);
+                    finishedCallback?.Invoke(translated.Trim());
                 }
             }
             catch (Exception e) {

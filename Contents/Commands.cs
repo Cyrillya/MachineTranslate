@@ -18,10 +18,10 @@ public class TranslateCommand : ModCommand
 
         string content = args[..].Aggregate((a, b) => a + " " + b);
         if (!content.IsTranslatable()) return;
-                
-        var lookup = Core.GetCurrentLookup();
+
+        var translator = Core.GetCurrentTranslator();
         
-        if (lookup.TryGetValue(content, out var value)) {
+        if (translator.TryGetLookupValue(content, out var value)) {
             Main.NewText(Language.GetTextValue("Mods.MachineTranslate.TransResult", value), Color.Pink);
             return;
         }

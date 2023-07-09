@@ -167,24 +167,33 @@ Config: {
 		Label: 以工具提示显示翻译后的文本
 		Tooltip: 是否在工具提示中显示翻译后的文本。若存在模组冲突，请尝试关闭此功能
 	}
+
+	OpenCachedTextFile: {
+		Label: 打开翻译缓存文件
+		Tooltip:
+		    '''
+		    包含所有翻译过的文本，用于减少重复API调用
+		    你还可以编辑文件以手动更正翻译，在编辑之前要先关闭泰拉瑞亚
+		    '''
+	}
 }
 
 TransApi: {
 	Tooltip: ""
 	Bing.Label: 必应（需API Key）
 	Google.Label: 谷歌（如果能上的话强烈推荐）
-	Baidu.Label: 百度（能申请API的话强烈推荐）（需API Key）
+	Baidu.Label: 百度（若有API推荐使用）（需API Key）
 	Caiyun.Label: 彩云（需Token）
 	CaiyunNoToken.Label: 彩云（无需Token）
 	Tencent.Label: 腾讯（无需API Key）
-	Volcengine.Label: 火山（无需API Key）
+	Volcengine.Label: 火山（英译中推荐）（无需API Key）
 }
 
 Proxy: {
 	Tooltip: ""
 	Default.Label: 默认
-	Http.Label: Http
-	Socks.Label: Socks
+	Http.Label: HTTP
+	Socks.Label: SOCKS
 	No.Label: 不使用代理
 }
 

@@ -123,9 +123,9 @@ public class Tencent : Translator
                     Thread.Sleep(100); // 防止请求过多
                 }
 
-                Lookup[text] = result.Trim();
+                SetLookupValue(text, result.Trim());
                 TranslateStatus = Status.Idling;
-                finishedCallback?.Invoke(Lookup[text]);
+                finishedCallback?.Invoke(result.Trim());
             }
             catch (Exception e) {
                 Mod.Logger.Warn(e);

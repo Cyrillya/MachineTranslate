@@ -31,9 +31,9 @@ public class Google : Translator
                 string returnedJson = await client.GetStringAsync(url);
                 if (JsonConvert.DeserializeObject(returnedJson) is JObject jo && jo.TryGetValue("sentences", out var result)) {
                     string translated = result.Aggregate("", (current, child) => current + child["trans"]);
-                    Lookup[text] = translated.Trim();
+                    SetLookupValue(text, translated.Trim());
                     TranslateStatus = Status.Idling;
-                    finishedCallback?.Invoke(Lookup[text]);
+                    finishedCallback?.Invoke(translated.Trim());
                 }
             }
             catch (Exception e) {

@@ -20,9 +20,9 @@ public class Bing : Translator
                 var returnedXml = await response.Content.ReadAsStreamAsync();
                 var xmlDoc = new XmlDocument();
                 xmlDoc.Load(returnedXml);
-                Lookup[text] = xmlDoc.InnerText;
+                SetLookupValue(text, xmlDoc.InnerText);
                 TranslateStatus = Status.Idling;
-                finishedCallback?.Invoke(Lookup[text]);
+                finishedCallback?.Invoke(xmlDoc.InnerText);
             }
             catch (Exception e) {
                 Mod.Logger.Warn(e);

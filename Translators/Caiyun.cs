@@ -44,9 +44,9 @@ public class Caiyun : Translator
                 var responseJson = await response.Content.ReadAsStringAsync();
                 if (JsonConvert.DeserializeObject(responseJson) is JObject jo &&
                     jo.TryGetValue("target", out var result)) {
-                    Lookup[text] = result.ToString();
+                    SetLookupValue(text, result.ToString());
                     TranslateStatus = Status.Idling;
-                    finishedCallback?.Invoke(Lookup[text]);
+                    finishedCallback?.Invoke(result.ToString());
                 }
             }
             catch (Exception e) {

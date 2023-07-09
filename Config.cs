@@ -36,6 +36,7 @@ public class Config : ModConfig
     public override ConfigScope Mode => ConfigScope.ClientSide;
     
     [CustomModConfigItem(typeof(OpenFile))] public object OpenFile;
+    [CustomModConfigItem(typeof(OpenCachedTextFile))] public object OpenCachedTextFile;
     [CustomModConfigItem(typeof(UsualLangCodePortal))] public object UsualLangCodePortal;
     [CustomModConfigItem(typeof(AllLangCodePortal))] public object AllLangCodePortal;
 

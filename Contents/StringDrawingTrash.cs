@@ -47,9 +47,9 @@ public class StringDrawingTrash : ILoadable
         if (text.StartsWith(Language.GetTextValue("Mods.MachineTranslate.TransResult", ""))) return;
 
         text = text.ReplaceLineEndings(""); // wordwrapped text support
-        var lookup = Core.GetCurrentLookup();
+        var translator = Core.GetCurrentTranslator();
 
-        if (lookup.TryGetValue(text, out var value)) {
+        if (translator.TryGetLookupValue(text, out var value)) {
             if (Core.Config.TranslatedTextTooltip) {
                 string finalText = FontAssets.MouseText.Value.CreateWrappedText(value, Main.screenWidth * 0.3f);
                 UICommon.TooltipMouseText(finalText);
@@ -66,7 +66,6 @@ public class StringDrawingTrash : ILoadable
         // the tooltip
         if (Core.Config.MonitorTooltipDisplay) {
             string keyString = _drawingChat ? "Ctrl" : MachineTranslate.TranslateKeybind.GetKeybindAssigned();
-            var translator = Core.GetCurrentTranslator();
             string statusMsg = translator.TranslateStatus switch {
                 Translator.Status.Idling => Language.GetTextValue("Mods.MachineTranslate.TransTooltip",
                     keyString),

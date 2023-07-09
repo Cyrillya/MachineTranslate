@@ -21,16 +21,15 @@ public class TranslateGlobalItem : GlobalItem
 
         if (!tooltipText.IsTranslatable()) return;
 
-        var lookup = Core.GetCurrentLookup();
+        var translator = Core.GetCurrentTranslator();
         
-        if (lookup.TryGetValue(tooltipText, out var value)) {
+        if (translator.TryGetLookupValue(tooltipText, out var value)) {
             tooltips.Add(new TooltipLine(Mod, "TooltipTranslated", ' ' + value) {
                 OverrideColor = Color.Pink
             });
             return;
         }
 
-        var translator = Core.GetCurrentTranslator();
         string statusMsg = translator.TranslateStatus switch {
             Translator.Status.Idling => Language.GetTextValue("Mods.MachineTranslate.TransTooltip",
                 MachineTranslate.TranslateKeybind.GetKeybindAssigned()),

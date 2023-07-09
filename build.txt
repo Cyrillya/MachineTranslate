@@ -2,3 +2,4 @@ displayName = Machine Translate
 author = Cyrilly
 version = 1.0
 side = Client
+includeSource = true

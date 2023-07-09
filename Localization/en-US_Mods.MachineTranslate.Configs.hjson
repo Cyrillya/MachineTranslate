@@ -155,6 +155,15 @@ Config: {
 		Label: Display Translated Text in Tooltip
 		Tooltip: Whether to display the translated text in tooltip. Try turn this off if there is a mod conflict
 	}
+
+	OpenCachedTextFile: {
+		Label: Open Translation Cache File
+		Tooltip:
+		    '''
+		    Contains all translated text to reduce repetitive API calls
+		    You can also edit the file to manually correct the translation (Remember to close Terraria before you edit)
+		    '''
+	}
 }
 
 TransApi: {
@@ -171,8 +180,8 @@ TransApi: {
 Proxy: {
 	Tooltip: ""
 	Default.Label: Default
-	Http.Label: Http
-	Socks.Label: Socks
+	Http.Label: HTTP
+	Socks.Label: SOCKS
 	No.Label: Don't use
 }
 
