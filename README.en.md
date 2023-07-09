@@ -4,6 +4,8 @@
 
 English | [简体中文](README.md)
 
+Provides quick machine translation of in-game text, supporting text added by other mods.
+
 </div>
 
 ## ✨ Functions
@@ -18,7 +20,6 @@ English | [简体中文](README.md)
 
 ## 🧩 Screenshots
 <img src=".res/voidbag-screenshot.png" width="500" />
-<br/>
 <br/>
 <img src="./.res/starlight-river-screenshot.png" width="800" />
 

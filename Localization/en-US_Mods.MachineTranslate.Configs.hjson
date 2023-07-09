@@ -159,10 +159,10 @@ Config: {
 	OpenCachedTextFile: {
 		Label: Open Translation Cache File
 		Tooltip:
-		    '''
-		    Contains all translated text to reduce repetitive API calls
-		    You can also edit the file to manually correct the translation (Remember to close Terraria before you edit)
-		    '''
+			'''
+			Contains all translated text to reduce repetitive API calls
+			You can also edit the file to manually correct the translation (Remember to close Terraria before you edit)
+			'''
 	}
 }
 

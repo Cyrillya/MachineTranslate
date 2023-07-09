@@ -4,6 +4,8 @@
 
 [English](./README.en.md) | 简体中文
 
+旨在为游戏内文本提供快捷机器翻译的模组，支持其他模组添加的文本。
+
 </div>
 
 ## ✨ 功能
@@ -19,7 +21,6 @@
 
 ## 🧩 截图
 <img src=".res/voidbag-screenshot.png" width="500" />
-<br/>
 <br/>
 <img src="./.res/starlight-river-screenshot.png" width="800" />
 

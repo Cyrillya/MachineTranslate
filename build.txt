@@ -1,5 +1,6 @@
-displayName = Machine Translate
+displayName = Machine Translate | 机器翻译
 author = Cyrilly
 version = 1.0
 side = Client
 includeSource = true
+homepage = https://github.com/Cyrillya/MachineTranslate

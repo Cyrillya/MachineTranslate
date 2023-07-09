@@ -1,1 +1,32 @@
-英 is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Provides quick machine translation of in-game text, supporting text added by other mods.
+
+[i:FallenStar] Functions
+1. Quick translate item tooltip
+2. Automatically translate chat messages
+3. Multiple translation APIs are available 
+   - With free translation API without API key required
+4. Open the translation website via hotkey
+   - You can choose to use Steam's built-in browser to open the website, which is convenient and fast
+5. Automatically detect and translate the text your mouse is hovering at
+6. Translated text cache, no need to re-translate after restarting the game
+
+--------------------
+
+旨在为游戏内文本提供快捷机器翻译的模组，支持其他模组添加的文本。
+
+[i:FallenStar] 功能
+1. 翻译物品简介
+2. 自动翻译聊天栏信息
+3. 可选多种翻译API
+    - 自带无需密钥的免费翻译API
+4. 一键打开翻译网站
+    - 可选使用Steam自带浏览器打开网站，方便快捷
+5. 自动检测并翻译鼠标位置的文本
+6. 附带完整的翻译API申请教程
+7. 翻译文本缓存，重启游戏后不需要重新翻译
+
+[i:ThePlan] Thanks to the following Open Source Projects and Users
+· akl7777777 - https://github.com/akl7777777
+· Newtonsoft.Json - https://github.com/JamesNK/Newtonsoft.Json
+· Watt Toolkit - https://github.com/BeyondDimension/SteamTools
+· 划词翻译 - https://github.com/hcfyapp
