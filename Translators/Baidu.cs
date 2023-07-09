@@ -14,7 +14,7 @@ public class Baidu : Translator
     public Baidu(Mod mod) : base(mod) {
     }
 
-    public override void Translate(string text, string targetLang) {
+    public override void Translate(string text, string targetLang, Action<string> finishedCallback) {
         async void TranslateInner() {
             var rd = new Random();
             string q = text; // 原文
@@ -34,7 +34,7 @@ public class Baidu : Translator
             url += "&sign=" + sign;
 
             try {
-                using var client = Core.GetHttpClient();
+                using var client = Helper.GetHttpClient();
                 var response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string returnedJson = await response.Content.ReadAsStringAsync();
@@ -44,6 +44,7 @@ public class Baidu : Translator
                     string translated = result.Aggregate("", (current, child) => current + "\n " + child["dst"]);
                     Lookup[text] = translated.Trim();
                     TranslateStatus = Status.Idling;
+                    finishedCallback?.Invoke(Lookup[text]);
                 }
             }
             catch (Exception e) {

@@ -118,7 +118,7 @@ public class CaiyunNoToken : Translator
     public CaiyunNoToken(Mod mod) : base(mod) {
     }
 
-    public override void Translate(string text, string targetLang) {
+    public override void Translate(string text, string targetLang, Action<string> finishedCallback) {
         async void TranslateInner() {
             try {
                 string result = "";
@@ -134,6 +134,7 @@ public class CaiyunNoToken : Translator
 
                 Lookup[text] = result.Trim();
                 TranslateStatus = Status.Idling;
+                finishedCallback?.Invoke(Lookup[text]);
             }
             catch (Exception e) {
                 Mod.Logger.Warn(e);

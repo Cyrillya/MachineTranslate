@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Terraria.ModLoader;
 
 namespace MachineTranslate.Translators;
@@ -20,5 +21,5 @@ public abstract class Translator
         Mod = mod;
     }
 
-    public abstract void Translate(string text, string targetLang);
+    public abstract void Translate(string text, string targetLang, Action<string> finishedCallback);
 }

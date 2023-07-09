@@ -13,7 +13,7 @@ public class Caiyun : Translator
     public Caiyun(Mod mod) : base(mod) {
     }
 
-    public override void Translate(string text, string targetLang) {
+    public override void Translate(string text, string targetLang, Action<string> finishedCallback) {
         async void TranslateInner() {
             const string url = "http://api.interpreter.caiyunai.com/v1/translator";
             string token = Core.Config.CaiyunTranToken;
@@ -30,7 +30,7 @@ public class Caiyun : Translator
             };
             
             try {
-                using var client = Core.GetHttpClient();
+                using var client = Helper.GetHttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("token", token);
                 client.Timeout = TimeSpan.FromSeconds(6);
@@ -46,6 +46,7 @@ public class Caiyun : Translator
                     jo.TryGetValue("target", out var result)) {
                     Lookup[text] = result.ToString();
                     TranslateStatus = Status.Idling;
+                    finishedCallback?.Invoke(Lookup[text]);
                 }
             }
             catch (Exception e) {

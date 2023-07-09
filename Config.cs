@@ -1,17 +1,6 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
 using MachineTranslate.ConfigElements;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.GameContent;
-using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader.Config;
-using Terraria.ModLoader.Config.UI;
-using Terraria.ModLoader.UI;
-using Terraria.UI;
-using Terraria.UI.Chat;
 
 namespace MachineTranslate;
 
@@ -28,6 +17,14 @@ public class Config : ModConfig
         Volcengine
     }
     
+    public enum TransWebsite
+    {
+        DeepL,
+        Bing,
+        Google,
+        Baidu
+    }
+    
     public enum Proxy
     {
         Default,
@@ -42,9 +39,19 @@ public class Config : ModConfig
     [CustomModConfigItem(typeof(UsualLangCodePortal))] public object UsualLangCodePortal;
     [CustomModConfigItem(typeof(AllLangCodePortal))] public object AllLangCodePortal;
 
+    [Header("Common")]
     [DrawTicks] [DefaultValue(TransApi.Google)]
     public TransApi TranslateApi;
     [CustomModConfigItem(typeof(Input))] public string CustomTargetLang;
+    [DrawTicks] [DefaultValue(TransWebsite.DeepL)]
+    public TransWebsite TranslateWebsite;
+    [DefaultValue(true)] public bool UseSteamBrowser;
+    
+    [Header("Monitor")]
+    [DefaultValue(false)] public bool AutoTranslateChat;
+    [DefaultValue(true)] public bool MonitorText;
+    [DefaultValue(true)] public bool MonitorTooltipDisplay;
+    [DefaultValue(true)] public bool TranslatedTextTooltip;
 
     [Header("Google")]
     public bool UseMirror;

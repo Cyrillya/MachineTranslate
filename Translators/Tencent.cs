@@ -109,7 +109,7 @@ public class Tencent : Translator
     public Tencent(Mod mod) : base(mod) {
     }
 
-    public override void Translate(string text, string targetLang) {
+    public override void Translate(string text, string targetLang, Action<string> finishedCallback) {
         async void TranslateInner() {
             try {
                 string result = "";
@@ -125,6 +125,7 @@ public class Tencent : Translator
 
                 Lookup[text] = result.Trim();
                 TranslateStatus = Status.Idling;
+                finishedCallback?.Invoke(Lookup[text]);
             }
             catch (Exception e) {
                 Mod.Logger.Warn(e);

@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameInput;
+using Terraria.Localization;
 using Terraria.UI;
 
 namespace MachineTranslate.ConfigElements;
@@ -14,7 +15,6 @@ public class UIFocusInputTextField : UIElement
 	internal bool Focused = false;
 	internal string CurrentString = "";
 
-	private readonly string _hintText;
 	private int _textBlinkerCount;
 	private int _textBlinkerState;
 	public bool UnfocusOnTab { get; internal set; } = false;
@@ -25,9 +25,8 @@ public class UIFocusInputTextField : UIElement
 	public event EventHandler OnUnfocus;
 	public event EventHandler OnTab;
 
-	public UIFocusInputTextField(string hintText)
+	public UIFocusInputTextField()
 	{
-		_hintText = hintText;
 	}
 
 	public void SetText(string text)
@@ -93,7 +92,7 @@ public class UIFocusInputTextField : UIElement
 		}
 		var space = GetDimensions();
 		if (CurrentString.Length == 0 && !Focused) {
-			Utils.DrawBorderString(spriteBatch, _hintText, new Vector2(space.X, space.Y), Color.Gray);
+			Utils.DrawBorderString(spriteBatch, Language.GetTextValue("Mods.MachineTranslate.TypeHere"), new Vector2(space.X, space.Y), Color.Gray, 0.75f);
 		}
 		else {
 			float scale = 310f / FontAssets.MouseText.Value.MeasureString(CurrentString).X;

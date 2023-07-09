@@ -9,11 +9,11 @@ public class Bing : Translator
     public Bing(Mod mod) : base(mod) {
     }
 
-    public override void Translate(string text, string targetLang) {
+    public override void Translate(string text, string targetLang, Action<string> finishedCallback) {
         async void TranslateInner() {
             string url =
                 $"https://api.microsofttranslator.com/v2/Http.svc/Translate?appId={Core.Config.BingTranAppId}&from={Core.Config.BingSourceLang}&to={targetLang}&text={text}";
-            using var client = Core.GetHttpClient();
+            using var client = Helper.GetHttpClient();
             client.Timeout = TimeSpan.FromSeconds(6);
             try {
                 var response = await client.GetAsync(url);
@@ -22,6 +22,7 @@ public class Bing : Translator
                 xmlDoc.Load(returnedXml);
                 Lookup[text] = xmlDoc.InnerText;
                 TranslateStatus = Status.Idling;
+                finishedCallback?.Invoke(Lookup[text]);
             }
             catch (Exception e) {
                 Mod.Logger.Warn(e);

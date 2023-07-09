@@ -44,12 +44,9 @@ public class OpenFile : ConfigElement
     public override void LeftClick(UIMouseEvent evt) {
         base.LeftClick(evt);
 
-        // 使用系统默认的方法打开URL
-        var psi = new ProcessStartInfo
+        Process.Start(new ProcessStartInfo(FullPath)
         {
-            FileName = FullPath,
             UseShellExecute = true
-        };
-        Process.Start(psi);
+        });
     }
 }

@@ -92,7 +92,7 @@ public class Volcengine : Translator
     public Volcengine(Mod mod) : base(mod) {
     }
 
-    public override void Translate(string text, string targetLang) {
+    public override void Translate(string text, string targetLang, Action<string> finishedCallback) {
         async void TranslateInner() {
             try {
                 await Translate(new Query {
@@ -102,6 +102,7 @@ public class Volcengine : Translator
                 }, response => {
                     Lookup[text] = response.Result.Target.Trim();
                     TranslateStatus = Status.Idling;
+                    finishedCallback?.Invoke(Lookup[text]);
                 });
             }
             catch (Exception e) {

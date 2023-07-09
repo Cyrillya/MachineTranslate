@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Terraria.GameContent.UI.Elements;
+﻿using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader.Config.UI;
 using Terraria.UI;
@@ -52,11 +51,9 @@ public abstract class LinkPortal : ConfigElement
     public override void LeftClick(UIMouseEvent evt) {
         base.LeftClick(evt);
 
-        // 使用系统默认的方法打开URL
-        var psi = new ProcessStartInfo {
-            FileName = GetUrl(),
-            UseShellExecute = true
-        };
-        Process.Start(psi);
+        Utils.OpenToURL(GetUrl());
+        
+        // Steam browser bugged for hcfy webpages
+        // Helper.OpenUrl(GetUrl());
     }
 }

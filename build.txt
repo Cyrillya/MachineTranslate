@@ -1,4 +1,4 @@
-displayName = 机器翻译
+displayName = Machine Translate
 author = Cyrilly
 version = 1.0
 side = Client

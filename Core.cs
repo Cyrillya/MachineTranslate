@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
+using MachineTranslate.Contents;
 using MachineTranslate.Translators;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -31,6 +31,7 @@ public class Core : ModSystem
             {Config.TransApi.Volcengine, new Volcengine(_mod)}
         };
     }
+
 
     public override void Unload() {
         TranslatorLookup.Clear();
@@ -62,57 +63,22 @@ public class Core : ModSystem
         return TranslatorLookup[Config.TranslateApi].Lookup;
     }
 
-    public static void Translate(string text) {
-        try {
-            var translator = GetCurrentTranslator();
-            translator.TranslateStatus = Translator.Status.Translating;
-            translator.Translate(text, TargetLang);
-        }
-        catch (Exception e) {
-            _mod.Logger.Warn(e);
-        }
-    }
-
-    public static HttpClient GetHttpClient() {
-        switch (Config.UseProxy) {
-            case Config.Proxy.Default:
-                return new HttpClient(handler: new HttpClientHandler {
-                    UseCookies = false
-                }, disposeHandler: true);
-            case Config.Proxy.No:
-                return new HttpClient(handler: new HttpClientHandler {
-                    UseProxy = false,
-                    UseCookies = false
-                }, disposeHandler: true);
-        }
-
-        string proxyType = Config.UseProxy is Config.Proxy.Http ? "http" : "socks5";
-        string ip = Config.Ip;
-        if (ip == "localhost")
-            ip = Environment.MachineName;
-        var proxy = new WebProxy {
-            Address = new Uri($"{proxyType}://{ip}:{Config.Host}"),
-            BypassProxyOnLocal = false,
-            UseDefaultCredentials = false,
+    public override void PostDrawInterface(SpriteBatch spriteBatch) {
+        /*
+            Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.MouseText.Value,
+                "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's conflict with Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic and subjugate all wizards and Muggles (non-magical people).", 800, 500, Color.White, Color.Black, Vector2.Zero,
+                0.8f);
+        */
+        
+        if (!MachineTranslate.OpenWebsiteKeybind.JustPressed) return;
+        string url = Config.TranslateWebsite switch {
+            Config.TransWebsite.DeepL => "https://www.deepl.com/translator",
+            Config.TransWebsite.Google => "https://translate.google.com/",
+            Config.TransWebsite.Bing => "https://www.bing.com/translator",
+            Config.TransWebsite.Baidu => "https://fanyi.baidu.com/",
+            _ => throw new ArgumentOutOfRangeException()
         };
-
-        // Proxy credentials
-        if (Config.UseCredential) {
-            proxy.Credentials = new NetworkCredential(Config.Username, Config.Password);
-        }
-
-        // Create a client handler that uses the proxy
-        var httpClientHandler = new HttpClientHandler {
-            Proxy = proxy,
-            UseProxy = true,
-            UseCookies = false
-        };
-
-        // Disable SSL verification
-        // httpClientHandler.ServerCertificateCustomValidationCallback =
-        //     HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
-        var client = new HttpClient(handler: httpClientHandler, disposeHandler: true);
-        return client;
+        Helper.OpenUrl(url);
     }
 
     /*

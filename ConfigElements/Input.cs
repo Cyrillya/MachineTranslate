@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader.Config.UI;
 using Terraria.UI;
@@ -30,7 +29,7 @@ public class Input : ConfigElement<string>
             Color = Color.Lerp(Color.White, new Color(63, 65, 151, 255), 0.85f) * 0.9f
         });
 
-        var uIInputTextField = new UIFocusInputTextField("Type here");
+        var uIInputTextField = new UIFocusInputTextField();
         uIInputTextField.SetText(Value);
         uIInputTextField.Top.Set(5, 0f);
         uIInputTextField.Left.Set(0, 0f);
