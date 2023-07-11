@@ -17,9 +17,9 @@ public class OpenCachedTextFile : OpenFile
 {
     protected override string FileName => "MachineTranslate_CachedContent.json";
 
-    public override void LeftClick(UIMouseEvent evt) {
+    public override void Click(UIMouseEvent evt) {
         SaveKeyValueLookup.SaveLookup();
-        base.LeftClick(evt);
+        base.Click(evt);
     }
 }
 
@@ -33,7 +33,7 @@ public class OpenFile : ConfigElement
         Height.Set(36f, 0f);
         DrawLabel = false;
         
-        Append(new UIText(Label, 0.4f, true) {
+        Append(new UIText(TextDisplayFunction(), 0.4f, true) {
             TextOriginX = 0.5f,
             TextOriginY = 0.5f,
             Width = StyleDimension.Fill,
@@ -52,8 +52,8 @@ public class OpenFile : ConfigElement
         base.DrawSelf(spriteBatch);
     }
 
-    public override void LeftClick(UIMouseEvent evt) {
-        base.LeftClick(evt);
+    public override void Click(UIMouseEvent evt) {
+        base.Click(evt);
 
         if (!File.Exists(FullPath)) return;
         Process.Start(new ProcessStartInfo(FullPath)

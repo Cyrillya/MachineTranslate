@@ -21,21 +21,21 @@ public class StringDrawingTrash : ILoadable
     private static bool _drawingChat;
 
     public void Load(Mod mod) {
-        On_RemadeChatMonitor.DrawChat += (orig, self, chat) => {
+        On.Terraria.GameContent.UI.Chat.RemadeChatMonitor.DrawChat += (orig, self, chat) => {
             _drawingChat = true;
             orig.Invoke(self, chat);
             _drawingChat = false;
         };
 
-        On_ChatManager
+        On.Terraria.UI.Chat.ChatManager
                 .DrawColorCodedString_SpriteBatch_DynamicSpriteFont_TextSnippetArray_Vector2_Color_float_Vector2_Vector2_refInt32_float_bool +=
             On_ChatManagerOnDrawColorCodedString_TextSnippetArray;
 
-        On_ChatManager
+        On.Terraria.UI.Chat.ChatManager
                 .DrawColorCodedString_SpriteBatch_DynamicSpriteFont_string_Vector2_Color_float_Vector2_Vector2_float_bool +=
             On_ChatManagerOnDrawColorCodedString_String;
 
-        On_Utils.DrawBorderStringFourWay += On_UtilsOnDrawBorderStringFourWay;
+        On.Terraria.Utils.DrawBorderStringFourWay += On_UtilsOnDrawBorderStringFourWay;
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class StringDrawingTrash : ILoadable
         if (translator.TryGetLookupValue(text, out var value)) {
             if (Core.Config.TranslatedTextTooltip) {
                 string finalText = FontAssets.MouseText.Value.CreateWrappedText(value, Main.screenWidth * 0.3f);
-                UICommon.TooltipMouseText(finalText);
+                Main.instance.MouseText(finalText);
             }
             // don't show the translated text in tooltip
             else if (MachineTranslate.TranslateKeybind.JustPressed ||
@@ -75,7 +75,7 @@ public class StringDrawingTrash : ILoadable
                 _ => throw new ArgumentOutOfRangeException()
             };
 
-            UICommon.TooltipMouseText(statusMsg);
+            Main.instance.MouseText(statusMsg);
         }
 
         if (MachineTranslate.TranslateKeybind.JustPressed || (_drawingChat && Main.keyState.PressingControl())) {
@@ -91,7 +91,7 @@ public class StringDrawingTrash : ILoadable
 
     // detect texts being drawn
     private Vector2 On_ChatManagerOnDrawColorCodedString_TextSnippetArray(
-        On_ChatManager.
+        On.Terraria.UI.Chat.ChatManager.
             orig_DrawColorCodedString_SpriteBatch_DynamicSpriteFont_TextSnippetArray_Vector2_Color_float_Vector2_Vector2_refInt32_float_bool
             orig, SpriteBatch sb, DynamicSpriteFont font, TextSnippet[] snippets, Vector2 position, Color baseColor,
         float rotation, Vector2 origin, Vector2 scale, out int hoveredSnippet, float maxWidth, bool ignoreColors) {
@@ -186,7 +186,7 @@ public class StringDrawingTrash : ILoadable
     }
 
     private Vector2 On_ChatManagerOnDrawColorCodedString_String(
-        On_ChatManager.
+        On.Terraria.UI.Chat.ChatManager.
             orig_DrawColorCodedString_SpriteBatch_DynamicSpriteFont_string_Vector2_Color_float_Vector2_Vector2_float_bool
             orig, SpriteBatch sb, DynamicSpriteFont font, string text, Vector2 position, Color baseColor,
         float rotation, Vector2 origin, Vector2 baseScale, float maxWidth, bool ignoreColors) {
@@ -249,7 +249,7 @@ public class StringDrawingTrash : ILoadable
         return orig.Invoke(sb, font, text, position, baseColor, rotation, origin, baseScale, maxWidth, ignoreColors);
     }
 
-    private void On_UtilsOnDrawBorderStringFourWay(On_Utils.orig_DrawBorderStringFourWay orig, SpriteBatch sb,
+    private void On_UtilsOnDrawBorderStringFourWay(On.Terraria.Utils.orig_DrawBorderStringFourWay orig, SpriteBatch sb,
         DynamicSpriteFont font, string text, float x, float y, Color textColor, Color borderColor, Vector2 origin,
         float scale) {
         if (!Core.Config.MonitorText) {

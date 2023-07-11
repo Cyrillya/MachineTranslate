@@ -48,12 +48,8 @@ public abstract class LinkPortal : ConfigElement
 {
     public abstract string GetUrl();
 
-    public override void LeftClick(UIMouseEvent evt) {
-        base.LeftClick(evt);
-
+    public override void Click(UIMouseEvent evt) {
+        base.Click(evt);
         Utils.OpenToURL(GetUrl());
-        
-        // Steam browser bugged for hcfy webpages
-        // Helper.OpenUrl(GetUrl());
     }
 }

@@ -40,7 +40,7 @@ public class UIFocusInputTextField : UIElement
 		}
 	}
 
-	public override void LeftClick(UIMouseEvent evt)
+	public override void Click(UIMouseEvent evt)
 	{
 		Main.clrInput();
 		Focused = true;

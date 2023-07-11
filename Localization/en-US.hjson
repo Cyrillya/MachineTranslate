@@ -1,0 +1,226 @@
+Mods.MachineTranslate: {
+    Keybinds: {
+        Translate.DisplayName: Translate Tooltip
+        OpenWebsite.DisplayName: Open Translate Website
+    }
+    
+    TypeHere: Type here
+    TransResult: Translated: {0}
+    TransTooltip: Press {0} to translate
+    Translating: Translating...
+    TransFailed: Translation failed, please try again or change the translation API. Press {0} to translate
+    
+    Commands: {
+        TranslateCommand: {
+            Description: Translates the text given and add it to the clipboard.
+            Usage:
+                '''
+                /trans <content>
+                content - The text to translate.
+                NOTE: You must specify the language codes, not the language names. Such as "en", "zh" and "ru".
+                '''
+        }
+    
+        WebsiteCommand: {
+            Description: Opens the translator page you selected in config.
+            Usage: /tweb
+        }
+    }
+    
+    Configs: {
+        Config: {
+            DisplayName: Config
+        
+            TranslateApi: {
+                Label: Translation API
+                Tooltip: If an error happens, try changing the translation API
+            }
+        
+            CustomTargetLang: {
+                Label: Custom Target Language
+                Tooltip: Please enter the file code, such as "en", "zh" and "ru"
+            }
+        
+            Headers: {
+                Google: Google Translate
+                Bing: Bing Translate
+                Baidu: Baidu Translate
+                Caiyun: Caiyun Translate
+                Proxy: Proxy Settings
+                Common: Common Settings
+                Monitor: Auto-detect Settings
+            }
+        
+            UseMirror: {
+                Label: Use Mirror Site
+                Tooltip: If you cannot access the official website of Google Translate, you can try to use a mirror site
+            }
+        
+            MirrorUrl: {
+                Label: Mirror Site Url
+                Tooltip: Enter the mirror site address here
+            }
+        
+            GooglePortal: {
+                Label: Google Translate Accessibility Solution
+                Tooltip: (ONLY IN CHINESE) An article of the huacifanyi plugin for web browsers, which includes available Google mirror sites
+            }
+        
+            BingSourceLang: {
+                Label: Source Language
+                Tooltip: Bing Translate API does not support auto-detection of languages, a language must be specified. Please enter the file code, such as "en", "zh" and "ru"
+            }
+        
+            BingTranAppId: {
+                Label: App ID
+                Tooltip: You have to provide an API Key for Bing Translate API. You can apply for it on the Azure Platform
+            }
+        
+            BaiduTranAppId: {
+                Label: App ID
+                Tooltip: You have to provide an API Key for Baidu Translate API. You can apply for it on Baidu Translate Platform
+            }
+        
+            BaiduTranSecretKey: {
+                Label: Secret Key
+                Tooltip: You have to provide a secret key for Baidu Translate API. You can apply for it on Baidu Translate Platform
+            }
+        
+            BaiduPortal: {
+                Label: Baidu Translate Platform
+                Tooltip: You can apply for an API Key here
+            }
+        
+            BaiduTutorialPortal: {
+                Label: Baidu Translate API Application Tutorial
+                Tooltip: (ONLY IN CHINESE) An article of the huacifanyi plugin for web browsers, which teaches you to apply for Baidu translate API
+            }
+        
+            CaiyunTranToken: {
+                Label: Access Token
+                Tooltip: ""
+            }
+        
+            CaiyunPortal: {
+                Label: Caiyun Translate Platform
+                Tooltip: You can apply for a Token here
+            }
+        
+            CaiyunTutorialPortal: {
+                Label: Caiyun Translate API Application Tutorial
+                Tooltip: (ONLY IN CHINESE) An article of the huacifanyi plugin for web browsers, which teaches you to apply for Caiyun translate API
+            }
+        
+            UseProxy: {
+                Label: Proxy Mode
+                Tooltip: ""
+            }
+        
+            Ip: {
+                Label: Host name
+                Tooltip: ""
+            }
+        
+            Host: {
+                Label: Port number
+                Tooltip: ""
+            }
+        
+            UseCredential: {
+                Label: Proxy authentication
+                Tooltip: ""
+            }
+        
+            Username: {
+                Label: Username
+                Tooltip: ""
+            }
+        
+            Password: {
+                Label: Password
+                Tooltip: ""
+            }
+        
+            OpenFile: {
+                Label: Open Config File
+                Tooltip: Configuration options will only appear in the file if they have been modified once
+            }
+        
+            UsualLangCodePortal: {
+                Label: Common Language Codes
+                Tooltip: ""
+            }
+        
+            AllLangCodePortal: {
+                Label: All Language Codes
+                Tooltip: ""
+            }
+        
+            TranslateWebsite: {
+                Label: Translate Website
+                Tooltip: The website that will open after pressing a specific keybind or entering a command
+            }
+        
+            UseSteamBrowser: {
+                Label: Use Steam Browser
+                Tooltip: Open the translate website using Steam's built-in browser instead of your default browser
+            }
+        
+            AutoTranslateChat: {
+                Label: Auto Translate Chat Messages
+                Tooltip: Whether to automatically translate the chat, if you are using your own API Key, please pay attention to the usage quota
+            }
+        
+            MonitorText: {
+                Label: Detect Displayed Text
+                Tooltip: Auto-detect whether your mouse is hovering on a text. If so, you can press the keybind to translate the text
+            }
+        
+            MonitorTooltipDisplay: {
+                Label: Detected Tooltip Display
+                Tooltip: Whether to show the tooltip 'Press [keybind] to translate' when the mouse is hovering on a text
+            }
+        
+            TranslatedTextTooltip: {
+                Label: Display Translated Text in Tooltip
+                Tooltip: Whether to display the translated text in tooltip. Try turn this off if there is a mod conflict
+            }
+        
+            OpenCachedTextFile: {
+                Label: Open Translation Cache File
+                Tooltip:
+                    '''
+                    Contains all translated text to reduce repetitive API calls
+                    You can also edit the file to manually correct the translation (Remember to close Terraria before you edit)
+                    '''
+            }
+        }
+        
+        TransApi: {
+            Tooltip: ""
+            Bing: Bing (API Key Required)
+            Google: Google (Recommended)
+            Baidu: Baidu (API Key Required)
+            Caiyun: Caiyun (Token Required)
+            CaiyunNoToken: Caiyun (No Token Required)
+            Tencent: Tencent (No Token Required)
+            Volcengine: Volcengine (No Token Required)
+        }
+        
+        Proxy: {
+            Tooltip: ""
+            Default: Default
+            Http: HTTP
+            Socks: SOCKS
+            No: Don't use
+        }
+        
+        TransWebsite: {
+            Tooltip: ""
+            DeepL: DeepL
+            Bing: Bing
+            Google: Google
+            Baidu: Baidu
+        }
+    }
+}
